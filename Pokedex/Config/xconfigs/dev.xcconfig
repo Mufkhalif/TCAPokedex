@@ -1,0 +1,18 @@
+//
+//  dev.xcconfig
+//  Pokedex
+//
+//  Created by mufkhalif on 12/08/24.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+
+APP_NAME = [DEV]SwiftUI
+PRODUCT_BUNDLE_IDENTIFIER = ngocpd.SwiftUIBase.dev
+
+// API:
+API_ENDPOINT = https:\/\/pokeapi.co
+API_VERSION = 3
+

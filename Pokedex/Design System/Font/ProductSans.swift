@@ -6,3 +6,9 @@
 //
 
 import Foundation
+import SwiftUI
+
+public enum ProductSans: String, CaseIterable {
+    case bold = "Product Sans Bold"
+    case regular = "Product Sans"
+}

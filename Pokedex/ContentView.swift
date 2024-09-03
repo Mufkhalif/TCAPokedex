@@ -2,23 +2,40 @@
 //  ContentView.swift
 //  Pokedex
 //
-//  Created by mufkhalif on 01/08/24.
+//  Created by mufkhalif on 02/09/24.
 //
 
+import ComposableArchitecture
 import SwiftUI
+import UIPilot
+
+enum AppRoute: Equatable {
+  case home
+  case detail(_ pokemon: PokemonDTO)
+}
 
 struct ContentView: View {
-    var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
+  @StateObject var pilot = UIPilot(initial: AppRoute.home)
+
+  var body: some View {
+    UIPilotHost(pilot) { route in
+      switch route {
+      case .home:
+        HomeView(
+          store: Store(initialState: HomeFeature.State()) {
+            HomeFeature()
+          }
+        )
+      case let .detail(pokemon): DetailView(
+          store: Store(initialState: DetailFeature.State(paramsPokemon: pokemon)) {
+            DetailFeature()
+          }
+        )
+      }
     }
+  }
 }
 
 #Preview {
-    ContentView()
+  ContentView()
 }
